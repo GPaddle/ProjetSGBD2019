@@ -12,36 +12,37 @@ Serveur							(idServeur, categorie, nom, prenom)
 
 */
 
+
 DECLARE
   cnt NUMBER;
 BEGIN
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'commande';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'COMMANDE';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE commande';
+    EXECUTE IMMEDIATE 'DROP TABLE commande CASCADE CONSTRAINTS ';
   END IF;
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'plat';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'PLAT';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE plat';
+    EXECUTE IMMEDIATE 'DROP TABLE plat CASCADE CONSTRAINTS';
   END IF;
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'serveur';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'SERVEUR';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE serveur';
+    EXECUTE IMMEDIATE 'DROP TABLE serveur CASCADE CONSTRAINTS';
   END IF;
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'tabl';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'TABL';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE tabl';
+    EXECUTE IMMEDIATE 'DROP TABLE tabl CASCADE CONSTRAINTS';
   END IF;
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'contient';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'CONTIENT';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE contient';
+    EXECUTE IMMEDIATE 'DROP TABLE contient CASCADE CONSTRAINTS';
   END IF;
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'affecter';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'AFFECTER';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE affecter';
+    EXECUTE IMMEDIATE 'DROP TABLE affecter CASCADE CONSTRAINTS';
   END IF;
-  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'auditer';
+  SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'AUDITER';
   IF cnt <> 0 THEN
-    EXECUTE IMMEDIATE 'DROP TABLE auditer';
+    EXECUTE IMMEDIATE 'DROP TABLE auditer CASCADE CONSTRAINTS';
   END IF;
 END;
 
@@ -124,6 +125,7 @@ create table commande
   montcom number(8, 2),
   primary key (numcom)
 );
+
 create table plat
 (
   numplat  number(4),
@@ -162,6 +164,7 @@ create table affecter
 
 alter table commande  add ( foreign key (numtab) references tabl (numtab));
 alter table affecter  add ( foreign key (numserv) references serveur (numserv));
+alter table affecter  add ( foreign key (numtab) references tabl (numtab));
 alter table contient  add ( foreign key (numcom) references commande (numcom));
 alter table contient  add ( foreign key (numplat) references plat (numplat));
 
@@ -175,6 +178,10 @@ create table auditer
   montcom number(8, 2),
   primary key (numcom)
 );
+
+
+alter table auditer add ( foreign key (numcom) references commande(numcom));
+
 --Données :
 -- Tuples de Serveur
 insert into serveur values (1, 'Tutus Peter', 'maitre d''hotel');
@@ -255,8 +262,35 @@ insert into contient values (105, 3, 2);
 insert into contient values (106, 3, 2);
 
 
+select datcom,plat.numplat, plat.libelle
+from PLAT inner join contient on plat.numplat=contient.numplat
+          inner join commande on contient.numcom=commande.numcom
+where datcom between to_date('2016-09-01','YYYY-MM-DD') and to_date('2017-01-01','YYYY-MM-DD');
+-- Changer les dates sur le where
+
+
 select numplat, libelle
-from PLAT inner join 
-where
+from PLAT
+
+minus
+
+select plat.numplat, plat.libelle
+from PLAT inner join contient on plat.numplat=contient.numplat
+          inner join commande on contient.numcom=commande.numcom
+where datcom between to_date('2016-09-01','YYYY-MM-DD') and to_date('2016-09-20','YYYY-MM-DD');
+-- Changer les dates sur le where
+
+
+select distinct nomserv, to_char(dataff, 'DD/MM/YYYY')
+from serveur inner join affecter on serveur.numserv=affecter.numserv
+where numtab = 10 and dataff between to_date('2015-01-01','YYYY-MM-DD') and to_date('2019-09-20','YYYY-MM-DD');
+-- Changer les dates sur le where et le numtab
+
+select sum(montcom), count(*)
+from serveur inner join affecter on serveur.numserv=affecter.numserv
+             inner join tabl on tabl.numtab= affecter.numtab
+             inner join commande on commande.numtab=tabl.numtab
+group by serveur.numserv;
+
 
 
