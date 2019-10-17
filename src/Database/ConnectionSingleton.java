@@ -3,6 +3,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import Connexion.ID_BDDLocal;
+
 
 public class ConnectionSingleton {
     private Connection c;
@@ -10,8 +12,8 @@ public class ConnectionSingleton {
 
     private ConnectionSingleton(){
         try{
-            String url = "jdbc:mysql://127.0.0.1:3306/goodfood";
-            c= DriverManager.getConnection(url,"root", "");
+        	ID_BDDLocal id = new ID_BDDLocal();
+            c= DriverManager.getConnection(id.getUrl(),id.getId(),id.getMdp());
         }catch(SQLException e){
             System.out.println(e);
         }

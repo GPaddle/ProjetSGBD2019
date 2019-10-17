@@ -255,4 +255,8 @@ insert into contient values (105, 3, 2);
 insert into contient values (106, 3, 2);
 
 
+select numplat, libelle
+from PLAT inner join 
+where
+
 
