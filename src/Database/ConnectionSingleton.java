@@ -14,7 +14,7 @@ public class ConnectionSingleton {
         try{
         	ID_BDDLocal id = new ID_BDDLocal();
         	
-            c= DriverManager.getConnection(id.getUrl(),id.getId(),id.getMdp());
+            c = DriverManager.getConnection(id.getUrl(),id.getId(),id.getMdp());
         }catch(SQLException e){
             System.out.println(e);
         }
