@@ -2,17 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="D:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6_g.jar"/>
-	<classpathentry kind="lib" path="D:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/ojdbc8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/ons.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/oraclepki.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/orai18n.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/osdt_cert.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/osdt_core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/simplefan.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/ucp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Documents/GitHub/ProjetSGBD2019/Driver/xdb6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/maach/OneDrive/Bureau/mariadb-java-client-2.4.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

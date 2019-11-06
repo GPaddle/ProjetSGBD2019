@@ -2,7 +2,7 @@ package Connexion;
 
 public class ID_BDDLocal {
 	
-	private String url ="jdbc:oracle:thin:@localhost:1521:XE";
+	private String url ="jdbc:mariadb://localhost:3306/projetBDD";
 	private String id ="achterfe2u";
 	private String mdp ="mdpOracle";
 	
