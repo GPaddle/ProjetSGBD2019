@@ -1,9 +1,7 @@
 package DAO;
 
 import Database.ConnectionSingleton;
-import Metier.TypePlat;
-import javafx.beans.property.SimpleIntegerProperty;
-
+import Metier.Plat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,20 +9,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypePlatDAO {
-    public TypePlatDAO(){
+public class PlatDAO {
+	
+    public PlatDAO(){
 
     }
 
-    public List<TypePlat> getAll(){
+    public List<Plat> getAll(){
         ConnectionSingleton cs = ConnectionSingleton.getInstance();
         Connection c = cs.getConnection();
-        List<TypePlat> allPlat = new ArrayList<>();
+        List<Plat> allPlat = new ArrayList<>();
         try {
-            PreparedStatement ps = c.prepareStatement("SELECT numplat, libelle FROM plat" );
+            PreparedStatement ps = c.prepareStatement("SELECT numplat, libelle, type, prixunit FROM plat" );
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                allPlat.add(new TypePlat(res.getInt("numplat"),res.getString("libelle")));
+                allPlat.add(new Plat(res.getInt("numplat"),res.getString("libelle"),res.getString("type"),res.getDouble("prixunit")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -32,21 +31,21 @@ public class TypePlatDAO {
         return allPlat;
     }
 
-    public TypePlat find(int id){
+    public Plat find(int id){
         ConnectionSingleton cs = ConnectionSingleton.getInstance();
         Connection c = cs.getConnection();
-        TypePlat typePlat = null;
+        Plat plat = null;
         try {
-            PreparedStatement ps = c.prepareStatement("SELECT numplat, libelle FROM plat WHERE numplat=?" );
+            PreparedStatement ps = c.prepareStatement("SELECT numplat, libelle, type, prixunit FROM plat WHERE numplat=?" );
             ps.setInt(0,id);
             ResultSet res = ps.executeQuery();
             if(res.first()) {
-                typePlat = new TypePlat(res.getInt(0), res.getString(1));
+                plat = new Plat(res.getInt(0), res.getString(1), res.getString(2), res.getDouble(3));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return typePlat;
+        return plat;
     }
 
 }

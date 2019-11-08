@@ -2,9 +2,9 @@ package Connexion;
 
 public class ID_BDDLocal {
 	
-	private String url ="jdbc:mariadb://localhost:3306/projetBDD";
-	private String id ="achterfe2u";
-	private String mdp ="mdpOracle";
+	private String url ="jdbc:mariadb://localhost:3306/goodfood";
+	private String id ="root";
+	private String mdp ="";
 	
 	public String getId() {
 		return id;

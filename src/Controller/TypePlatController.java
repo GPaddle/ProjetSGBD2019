@@ -5,10 +5,6 @@ import Metier.TypePlat;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-
-import javax.annotation.Resources;
-
-import java.net.URL;
 import java.util.ArrayList;
 
 public class TypePlatController {

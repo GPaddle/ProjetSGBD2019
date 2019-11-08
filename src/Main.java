@@ -1,3 +1,8 @@
+
+import java.util.List;
+
+import DAO.AffecterDAO;
+import Metier.Affecter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +22,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        
     }
 }
