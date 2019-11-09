@@ -21,10 +21,10 @@ public class TypePlatDAO {
         Connection c = cs.getConnection();
         List<TypePlat> allPlat = new ArrayList<>();
         try {
-            PreparedStatement ps = c.prepareStatement("SELECT numTypePlat, nomTypePlat FROM typeplat" );
+            PreparedStatement ps = c.prepareStatement("SELECT numplat, libelle FROM plat" );
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                allPlat.add(new TypePlat(res.getInt("numTypePlat"),res.getString("nomTypePlat")));
+                allPlat.add(new TypePlat(res.getInt("numplat"),res.getString("libelle")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
