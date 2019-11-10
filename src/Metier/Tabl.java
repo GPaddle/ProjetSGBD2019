@@ -13,6 +13,7 @@ public class Tabl {
 	public int getNumTab() {
 		return numTab;
 	}
+
 	public int getNbPlace() {
 		return nbPlace;
 	}
