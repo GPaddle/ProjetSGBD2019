@@ -5,8 +5,8 @@ public class TypePlat {
 	private int numTypePlat = 0;
     private String nomTypePlat = "";
 
-    public TypePlat(int num, String nom){
-        this.numTypePlat = num;
+    public TypePlat(int i, String nom){
+        this.numTypePlat = i;
         this.nomTypePlat = nom;
     }
 

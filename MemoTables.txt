@@ -1,8 +1,0 @@
-TABLES (numtab, NbPlace)
-SERVEUR (numserv, nom, prenom, poste, dateRec, dateDep)
-AFFECTER (#numtab, dateAffect, #numserv)
-COMMANDE (#numtab, datecom,NbPers, HeurePay, ModePay, Montant, numcom)
-CONTIENT (#codeplat, qte, #numcom)
-PLAT (codePlat, libelle, typeplat, prix)
-SalPrime(salbase,prime,poste)
-Bilan2017(numserv,totSalaire)

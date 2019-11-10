@@ -1,6 +1,7 @@
 package Metier;
 
 public class Tabl {
+<<<<<<< HEAD
 	private int numTab = 0;
 	private int nbPlace = 0;
 	
