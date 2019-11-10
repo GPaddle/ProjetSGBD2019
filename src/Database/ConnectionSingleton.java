@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import Connexion.ID_BDDLocal;
+import Connexion.IDBDD;
 
 
 public class ConnectionSingleton {
@@ -12,7 +12,7 @@ public class ConnectionSingleton {
 
     private ConnectionSingleton(){
         try{
-        	ID_BDDLocal id = new ID_BDDLocal();
+        	IDBDD id = new IDBDD();
         	
             c = DriverManager.getConnection(id.getUrl(),id.getId(),id.getMdp());
         }catch(SQLException e){
@@ -21,13 +21,37 @@ public class ConnectionSingleton {
     }
 
 
-    public static ConnectionSingleton getInstance(){
+    private ConnectionSingleton(String uRL, String iD, String mDP) {
+        try{
+            c = DriverManager.getConnection(uRL,iD,mDP);
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+	}
+
+
+	public synchronized static ConnectionSingleton getInstance(){
         if(s == null){
             s = new ConnectionSingleton();
         }else {
             try {
                 if(s.c!=null && s.c.isClosed()){
                     s = new ConnectionSingleton();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return s;
+    }
+    
+    public synchronized static ConnectionSingleton getInstance(String uRL,String iD,String mDP){
+        if(s == null){
+            s = new ConnectionSingleton();
+        }else {
+            try {
+                if(s.c!=null && s.c.isClosed()){
+                    s = new ConnectionSingleton(uRL, iD, mDP);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
