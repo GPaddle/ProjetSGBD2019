@@ -24,7 +24,7 @@ public class CommandeDAO {
             PreparedStatement ps = c.prepareStatement("SELECT numcom, numtab, datcom, nbpers, datpaie, modpaie, montcom FROM commande" );
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                allCom.add(new Commande(res.getInt("numcom"),res.getInt("numtab"),res.getString("datecom"),res.getInt("nbpers"),res.getString("datpaie"),res.getString("modpaie"),res.getDouble("montcom")));
+                allCom.add(new Commande(res.getInt("numcom"),res.getInt("numtab"),res.getString("datcom"),res.getInt("nbpers"),res.getString("datpaie"),res.getString("modpaie"),res.getDouble("montcom")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
