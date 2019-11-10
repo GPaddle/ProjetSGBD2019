@@ -1,0 +1,103 @@
+
+
+
+
+Commande
+Numcom/numtab/datecom/nbpers/heurepay/modpay)
+insert into commande values (10,10,to_date('10/01/2018'),2,to_date('20:50','HH24:MI'),'carte');
+insert into commande values (11,11,to_date('11/01/2018'),4,to_date('21:20','HH24:MI'),'cheque');
+insert into commande values (12,17,to_date('11/01/2018'),2,to_date('20:55','HH24:MI'),'carte');
+insert into commande values (13,12,to_date('10/01/2018'),2,to_date('21:10','HH24:MI'),'espece');
+insert into commande values (14,18,to_date('10/01/2018'),1,to_date('21:00','HH24:MI'),'cheque');
+insert into commande values (15,10,to_date('11/01/2018'),2,to_date('20:45','HH24:MI'),'carte');
+insert into commande values (20,10,to_date('20/02/2018'),2,to_date('12:50','HH24:MI'),'carte');
+insert into commande values (21,11,to_date('21/02/2018'),4,to_date('12:20','HH24:MI'),'cheque');
+insert into commande values (22,17,to_date('21/01/2018'),2,to_date('13:55','HH24:MI'),'carte');
+insert into commande values (23,12,to_date('20/03/2018'),2,to_date('13:10','HH24:MI'),'espece');
+insert into commande values (24,18,to_date('20/03/2018'),1,to_date('13:00','HH24:MI'),'cheque');
+insert into commande values (25,NULL,to_date('21/02/2018'),2,to_date('13:45','HH24:MI'),'carte');
+
+Affecter
+Numtab/dateAffect/numserv
+insert into affecter values (10,to_date('10/01/2018'),1);
+insert into affecter values (11,to_date('11/01/2018'),1);
+insert into affecter values (12,to_date('10/01/2018'),1);
+insert into affecter values (14,to_date('10/01/2018'),2);
+insert into affecter values (17,to_date('11/01/2018'),2);
+insert into affecter values (18,to_date('10/01/2018'),2);
+insert into affecter values (15,to_date('12/01/2018'),3);
+insert into affecter values (16,to_date('10/01/2018'),NULL);
+insert into affecter values (10,to_date('11/01/2018'),1);
+
+
+
+Plat
+Codeplat/libelle/typePlat/prix
+
+insert into plat values ('v1','filet de boeuf','viande',to_number('8,20'));
+insert into plat values ('e1','salade verte','entree',to_number('3,30'));
+insert into plat values ('e2','chevre chaud','entree',to_number('4,50'));
+insert into plat values ('e3','pate lorrain','entree',to_number('4,0'));
+insert into plat values ('e4','saumon fume','entree',to_number('8,00'));
+insert into plat values ('v2','entrecote printaniere','viande',to_number('11,00'));
+insert into plat values ('a1','gratin dauphinois','plat',to_number('8,75'));
+insert into plat values ('p1','brochet a l''oseille','poisson',to_number('9,80'));
+insert into plat values ('v3','gigot d''agneau','viande',to_number('7,60'));
+insert into plat values ('d1','creme caramel','dessert',to_number('3,00'));
+insert into plat values ('f1','munster au cumin','fromage',to_number('3,00'));
+insert into plat values ('p2','filets de sole au beurre','poisson',to_number('10,00'));
+insert into plat values ('e5','foie gras de lorraine','entree',to_number('12,10'));
+insert into plat values ('v4','chevreuil sauce forestiere','viande',to_number('11,70'));
+insert into plat values ('e6','assiette de crudites','entree',to_number('4,50'));
+insert into plat values ('d2','tarte de saison','dessert',to_number('5,50'));
+insert into plat values ('d3','sorbet mirabelle','dessert',to_number('4,50'));
+
+
+Contient
+Numcom/codeplat/qte
+insert into contient values (10,'v1',2);
+insert into contient values (10,'e1',2);
+insert into contient values (10,'d1',1);
+insert into contient values (10,'d3',1);
+insert into contient values (11,'e3',2);
+insert into contient values (11,'e5',2);
+insert into contient values (11,'v3',2);
+insert into contient values (11,'p2',2);
+insert into contient values (11,'d2',2);
+insert into contient values (11,'d3',2);
+insert into contient values (12,'e6',2);
+insert into contient values (12,'a1',2);
+insert into contient values (12,'f1',2);
+insert into contient values (12,'d2',1);
+insert into contient values (12,'d3',1);
+insert into contient values (13,'v2',2);
+insert into contient values (13,'f1',2);
+insert into contient values (13,'d2',1);
+insert into contient values (13,'d3',1);
+insert into contient values (14,'e3',1);
+insert into contient values (14,'p1',1);
+insert into contient values (14,'f1',1);
+insert into contient values (14,'d3',1);
+insert into contient values (15,'d3',2);
+
+
+Conges
+Numserv/datedeb/datefin/nbjour
+insert into conges values (2, '12/03/2017','18/03/2017',2);
+insert into conges values (2, '25/06/2017','30/06/2017',3);
+insert into conges values (2, '12/09/2017','17/09/2017',2);
+insert into conges values (3, '12/04/2017','18/05/2017',10);
+insert into conges values (3, '21/03/2017','28/03/2017',2);
+insert into conges values (4, '14/02/2017','18/02/2017',0);
+insert into conges values (4, '15/03/2017','25/03/2017',6);
+insert into conges values (4, '16/08/2017','18/09/2017',7);
+insert into conges values (5, '16/02/2017','25/02/2017',3);
+insert into conges values (5, '17/03/2017','20/03/2017',2);
+insert into conges values (5, '19/04/2017','28/04/2017',5);
+
+
+
+
+
+
+
