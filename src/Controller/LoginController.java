@@ -54,8 +54,12 @@ public class LoginController {
 		String passWord = pass.getText();
 		String URL = adress.getText();
 
-		System.out.println(
-				"Nom d'utilisateur : " + userN + "\nMot de passe : " + passWord + "\nURL base de donnée : " + URL);
+		String txt ="Nom d'utilisateur : " + userN + "\nMot de passe : " ;
+		for (int i = 0; i < passWord.length(); i++) {
+			txt+="*";
+		}
+		txt+="\nURL base de donnée : " + URL;
+		System.out.println(txt);
 		Main.Action((JFXButton) event.getSource());
 
 		connect(userN, passWord, URL);
@@ -64,15 +68,14 @@ public class LoginController {
 
 	private void connect(String userN, String passWord, String uRL) {
 		ConnectionSingleton cs;
+		
+		
 		if (userN.equals("") && passWord.equals("") && uRL.equals("")) {
 			cs = ConnectionSingleton.getInstance();
 			
 		} else {
 			cs = ConnectionSingleton.getInstance(uRL, userN, passWord);
 		}
-		System.out.println(cs);
-
-		// System.out.println(root);
 
 		try {
 
@@ -82,12 +85,20 @@ public class LoginController {
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue4.fxml")));
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue5.fxml")));
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue6.fxml")));
+			Main.setVue(1);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			System.err.println("\n\n\nProblème de connexion\n\nVeuillez relancer l'application");
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			System.exit(1);
 		}
 
-		Main.setVue(1);
 
 	}
 
