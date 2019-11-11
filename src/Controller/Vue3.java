@@ -82,11 +82,11 @@ public class Vue3 {
 
 		if (((JFXButton) event.getSource()).getId().equals("Valider")) {
 			int taille = Resultats.getChildren().size();
-			
+
 			for (int i = 0; i < taille; i++) {
 				Resultats.getChildren().remove(0);
 			}
-			
+
 			LocalDate dDeb;
 			LocalDate dFin;
 			int table;
@@ -120,7 +120,7 @@ public class Vue3 {
 					ps.setInt(1, table);
 					ps.setString(2, dDeb.toString());
 					ps.setString(3, dFin.toString());
-					
+
 					ResultSet res = ps.executeQuery();
 
 					int i = 1;
@@ -156,6 +156,8 @@ public class Vue3 {
 		assert MAJMont != null : "fx:id=\"MAJMont\" was not injected: check your FXML file 'Vue3.fxml'.";
 		assert Cancel != null : "fx:id=\"Cancel\" was not injected: check your FXML file 'Vue3.fxml'.";
 
+		cs = ConnectionSingleton.getInstance();
+
 		TablDAO td = new TablDAO();
 
 		List<Tabl> al = td.getAll();
@@ -169,8 +171,6 @@ public class Vue3 {
 		ObservableList<Integer> alNumTab = new ObservableListWrapper<>(null);
 
 		liste.getItems().setAll(als);
-
-		cs = ConnectionSingleton.getInstance();
 
 	}
 }

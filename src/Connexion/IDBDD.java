@@ -6,6 +6,9 @@ public class IDBDD {
 	private String id ="GPaddle";
 	private String mdp ="GPaddle";
 	
+
+	//   		jdbc:oracle:thin:@localhost:1521:XE
+	
 	public IDBDD(String url, String id, String mdp) {
 		super();
 		this.url = url;

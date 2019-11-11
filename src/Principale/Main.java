@@ -1,6 +1,6 @@
 package Principale;
 
-
+import java.io.IOException;
 import java.util.ArrayList;
 import com.jfoenix.controls.JFXButton;
 
@@ -29,12 +29,6 @@ public class Main extends Application {
 		 */
 
 		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Login.fxml")));
-		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue1.fxml")));
-		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue2.fxml")));
-		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue3.fxml")));
-		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue4.fxml")));
-		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue5.fxml")));
-		listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue6.fxml")));
 
 		ps = primaryStage;
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
@@ -51,6 +45,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 
 	public static void setVue(int i) {
 		root.getChildren().remove(listePane.get(index));
@@ -65,32 +60,31 @@ public class Main extends Application {
 	public static void Action(JFXButton bouton) {
 		String txt = bouton.getId();
 		if (txt.equals("ListeP")) {
-			//System.out.println("Liste p");
+			// System.out.println("Liste p");
 			Main.setVue(1);
 		} else if (txt.equals("NonListP")) {
-			//System.out.println("Pas L Plat");
+			// System.out.println("Pas L Plat");
 			Main.setVue(2);
 
 		} else if (txt.equals("ServeurT")) {
-			//System.out.println("Serv t");
+			// System.out.println("Serv t");
 			Main.setVue(3);
 
 		} else if (txt.equals("ChiffreA")) {
-			//System.out.println("CA + nb");
+			// System.out.println("CA + nb");
 			Main.setVue(4);
 
 		} else if (txt.equals("NonCA")) {
-			//System.out.println("Pas de CA");
+			// System.out.println("Pas de CA");
 			Main.setVue(5);
 
 		} else if (txt.equals("MAJMont")) {
-			//System.out.println("Maj Mont");
+			// System.out.println("Maj Mont");
 			Main.setVue(6);
 
 		} else if (txt.equals("Cancel")) {
-			//System.out.println("Fermer");
+			// System.out.println("Fermer");
 			System.exit(0);
-			
 
 		}
 

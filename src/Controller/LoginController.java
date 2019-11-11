@@ -56,21 +56,39 @@ public class LoginController {
 
 		System.out.println(
 				"Nom d'utilisateur : " + userN + "\nMot de passe : " + passWord + "\nURL base de donnée : " + URL);
+		Main.Action((JFXButton) event.getSource());
 
 		connect(userN, passWord, URL);
 
 	}
 
 	private void connect(String userN, String passWord, String uRL) {
+		ConnectionSingleton cs;
 		if (userN.equals("") && passWord.equals("") && uRL.equals("")) {
-			ConnectionSingleton cs = ConnectionSingleton.getInstance();
+			cs = ConnectionSingleton.getInstance();
+			
 		} else {
-			ConnectionSingleton cs = ConnectionSingleton.getInstance(uRL, userN, passWord);
+			cs = ConnectionSingleton.getInstance(uRL, userN, passWord);
+		}
+		System.out.println(cs);
+
+		// System.out.println(root);
+
+		try {
+
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue1.fxml")));
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue2.fxml")));
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue3.fxml")));
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue4.fxml")));
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue5.fxml")));
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue6.fxml")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		//System.out.println(root);
-
 		Main.setVue(1);
+
 	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete

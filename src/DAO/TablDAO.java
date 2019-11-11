@@ -19,6 +19,7 @@ public class TablDAO {
     public List<Tabl> getAll(){
         ConnectionSingleton cs = ConnectionSingleton.getInstance();
         Connection c = cs.getConnection();
+        
         List<Tabl> allTabl = new ArrayList<>();
         try {
             PreparedStatement ps = c.prepareStatement("SELECT numtab, nbplace FROM tabl" );
