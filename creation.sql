@@ -340,7 +340,7 @@ values (106, 3, 2);
 
 -- 1
 
-select datcom, plat.numplat, plat.libelle
+select distinct plat.numplat, plat.libelle
 from PLAT
        inner join contient on plat.numplat = contient.numplat
        inner join commande on contient.numcom = commande.numcom
@@ -406,10 +406,12 @@ group by serveur.nomserv, serveur.numserv;
 
 -- 6
 
-create or replace procedure majMontant is
+create or replace procedure majMontant(p_numcom INTEGER) is
   cursor numC is (select contient.numcom, plat.prixunit * contient.quantite as mont
                   from contient
-                         inner join plat on contient.numplat = plat.numplat);
+                         inner join plat on contient.numplat = plat.numplat
+  inner join commande on contient.numcom=commande.numcom
+    where commande.numcom= p_numcom);
 begin
 
   for commandeCourante in numC
@@ -479,13 +481,15 @@ select *
 from auditer;
 
 insert into commande
-values (108, 14, '11/10/2016', 2, to_date('11/10/2016 22:45', 'dd/mm/yyyy hh24:mi'), 'Carte', null);
+values (109, 14, '11/10/2016', 2, to_date('11/10/2016 22:45', 'dd/mm/yyyy hh24:mi'), 'Carte', null);
 
 insert into contient
-values (108, 1, 1);
+values (109, 1, 1);
+
+select * from commande;
 
 begin
-  majMontant();
+  majMontant(108);
 end;
 
 -- 7b
