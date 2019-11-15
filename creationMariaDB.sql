@@ -91,3 +91,91 @@ alter table commande add ( foreign key (numtab)references tabl(numtab));
 alter table affecter add ( foreign key(numserv)references serveur(numserv));
 alter table contient add ( foreign key(numcom)references commande(numcom));
 alter table contient add ( foreign key(numplat)references plat(numplat));
+
+create or replace procedure majMontant is
+  cursor numC is (select contient.numcom, plat.prixunit * contient.quantite as mont
+                  from contient
+                         inner join plat on contient.numplat = plat.numplat);
+begin
+
+  for commandeCourante in numC
+    loop
+      update commande set montcom = commandeCourante.mont where commandeCourante.numcom = commande.numcom;
+    end loop;
+
+end;
+
+create or replace
+  TRIGGER enregistrementAuditer
+  after update of montcom
+  on commande
+  for each row
+declare
+
+  nbPersCour number(2);
+  montantCom number(3);
+  gServ      varchar2(20);
+  nb         number(1);
+
+begin
+  montantCom := :new.montcom;
+
+  nbPersCour := :new.nbpers;
+
+  select grade into gServ
+  from serveur
+         inner join affecter on serveur.numserv = affecter.numserv
+  where date_format(:new.datpaie, '%Y-%m-%d') = date_format(affecter.dataff, '%Y-%m-%d')
+    and affecter.numtab = :new.numtab;
+
+  if (gServ = 'maitre d''hotel' and montantCom / nbPersCour < 15) then
+
+    select COUNT(*) into nb
+    from auditer
+    where :new.numcom = auditer.numcom;
+
+    if (nb = 0) then
+      insert
+      into auditer
+      values (:new.numcom, :new.numtab, :new.datcom, :new.nbpers, :new.datpaie, :new.montcom);
+    end if;
+
+  end if;
+
+exception
+  When NO_DATA_FOUND Then
+    null;
+
+end;
+
+create or replace
+  TRIGGER verifQte
+  before insert
+  on contient
+  for each row
+
+declare
+
+  nbP   number(2);
+  maxNb number(2);
+
+begin
+
+  select max(quantite) into maxNb
+  from contient
+  where :new.numcom = contient.numcom;
+
+  if (:new.quantite > maxNb) then
+    maxNb := :new.quantite;
+  end if;
+
+  select nbpers into nbP
+  from commande
+  where :new.numcom = commande.numcom;
+
+
+  if (maxNb > nbP) then
+    RAISE_APPLICATION_ERROR(-20501, 'Insertion impossible, trop de plats/nb client');
+  end if;
+
+end;

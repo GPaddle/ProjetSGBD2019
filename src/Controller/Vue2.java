@@ -57,7 +57,7 @@ public class Vue2 {
 			for (int i = 0; i < taille; i++) {
 				Resultats.getChildren().remove(0);
 			}
-			
+
 			LocalDate dDeb;
 			LocalDate dFin;
 
@@ -100,7 +100,7 @@ public class Vue2 {
 						i++;
 
 					}
-					System.out.println("Requete SQL complétée");
+					System.out.println("Requete SQL complï¿½tï¿½e");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

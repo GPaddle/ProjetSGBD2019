@@ -100,6 +100,7 @@ public class Vue5 {
 							"       inner join commande on commande.numtab = tabl.numtab\r\n" + 
 							"where datcom between "+Main.fdb.getDate()+" and "+Main.fdb.getDate()+"\r\n" + 
 							"group by serveur.nomserv, serveur.numserv");
+//SALUT GUILLAUME REGARDE HAUT DESSUS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 					if (dDeb.isAfter(dFin)) {
 						LocalDate dTemp = dFin;

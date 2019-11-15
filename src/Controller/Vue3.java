@@ -95,7 +95,7 @@ public class Vue3 {
 				table = liste.getValue();
 
 			} catch (NullPointerException e) {
-				System.err.println("Merci de spécifier une table");
+				System.err.println("Merci de spï¿½cifier une table");
 				return;
 			}
 
@@ -140,7 +140,7 @@ public class Vue3 {
 						i++;
 
 					}
-					System.out.println("Requete SQL complétée");
+					System.out.println("Requete SQL complï¿½tï¿½e");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
