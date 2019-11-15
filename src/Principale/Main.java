@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import com.jfoenix.controls.JFXButton;
 
+import Fabrique.FabriqueDB;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,6 +18,7 @@ public class Main extends Application {
 	public static ArrayList<AnchorPane> listePane = new ArrayList<>();
 	public static int index = 0;
 	public static AnchorPane root;
+	public static FabriqueDB fdb;
 
 	public static Stage ps;
 
@@ -45,11 +48,17 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
 
 	public static void setVue(int i) {
 		root.getChildren().remove(listePane.get(index));
 		root.getChildren().add(listePane.get(i));
+		if (i != 0) {
+			root.getChildren().remove(listePane.get(listePane.size() - 1));
+
+			root.getChildren().add(listePane.get(listePane.size() - 1));
+
+		}
+		setOnglet(i);
 		index = i;
 	}
 
@@ -57,36 +66,14 @@ public class Main extends Application {
 		return listePane.get(i);
 	}
 
-	public static void Action(JFXButton bouton) {
-		String txt = bouton.getId();
-		if (txt.equals("ListeP")) {
-			// System.out.println("Liste p");
-			Main.setVue(1);
-		} else if (txt.equals("NonListP")) {
-			// System.out.println("Pas L Plat");
-			Main.setVue(2);
-
-		} else if (txt.equals("ServeurT")) {
-			// System.out.println("Serv t");
-			Main.setVue(3);
-
-		} else if (txt.equals("ChiffreA")) {
-			// System.out.println("CA + nb");
-			Main.setVue(4);
-
-		} else if (txt.equals("NonCA")) {
-			// System.out.println("Pas de CA");
-			Main.setVue(5);
-
-		} else if (txt.equals("MAJMont")) {
-			// System.out.println("Maj Mont");
-			Main.setVue(6);
-
-		} else if (txt.equals("Cancel")) {
-			// System.out.println("Fermer");
-			System.exit(0);
-
+	private static void setOnglet(int i) {
+		if (root.getChildren().size() > 1) {
+			AnchorPane Barre = (AnchorPane) root.getChildren().get(1);
+			HBox menu = (HBox) Barre.getChildren().get(0);
+			((JFXButton) (menu.getChildren().get(i-1))).setStyle("-fx-background-color:#0f02");
+			if (index!=0) {
+				((JFXButton) (menu.getChildren().get(index-1))).setStyle("-fx-background-color:#0002");
+			}
 		}
-
 	}
 }
