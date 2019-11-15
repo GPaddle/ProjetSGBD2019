@@ -4,7 +4,7 @@ public class FabriqueMariaDB extends FabriqueDB{
 
 	@Override
 	public String getDate() {
-		return "to_char_date(?,%y%m%d)";
+		return "str_to_date(?, '%Y-%m-%d')";
 	}
 
 }
