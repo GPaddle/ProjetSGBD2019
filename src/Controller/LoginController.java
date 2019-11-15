@@ -5,22 +5,34 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.javafx.collections.ObservableListWrapper;
 
 import Connexion.IDBDD;
+import DAO.CommandeDAO;
 import Database.ConnectionSingleton;
+import Fabrique.FabriqueMariaDB;
+import Fabrique.FabriqueOracle;
+import Metier.Commande;
 import Principale.Main;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class LoginController {
 
@@ -49,35 +61,67 @@ public class LoginController {
 	private AnchorPane root;
 
 	@FXML
+	private JFXComboBox<String> typeBD;
+
+	@FXML
+	private VBox log;
+
+	@FXML
+	private JFXButton Cancel;
+
+	@FXML
+	private JFXSpinner Spinner;
+
+	String[] als = { "Oracle", "MariaDB" };
+
+	@FXML
 	void handle(ActionEvent event) {
+
+		if (((JFXButton) event.getSource()).getId().equals("Cancel")) {
+			System.exit(0);
+		}
 		String userN = userName.getText();
 		String passWord = pass.getText();
 		String URL = adress.getText();
 
-		String txt ="Nom d'utilisateur : " + userN + "\nMot de passe : " ;
+		String txt = "Nom d'utilisateur : " + userN + "\nMot de passe : ";
 		for (int i = 0; i < passWord.length(); i++) {
-			txt+="*";
+			txt += "*";
 		}
-		txt+="\nURL base de donnée : " + URL;
+		txt += "\nURL base de donnée : " + URL;
 		System.out.println(txt);
-		Main.Action((JFXButton) event.getSource());
 
 		connect(userN, passWord, URL);
 
 	}
 
 	private void connect(String userN, String passWord, String uRL) {
+		/*
+		 * log.setVisible(false); Spinner.setVisible(true); try { Thread.sleep(1000); }
+		 * catch (InterruptedException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
 		ConnectionSingleton cs;
-		
-		
+
+		if (typeBD.getValue() == null || typeBD.getValue().equals("Oracle")) {
+			Main.fdb = new FabriqueOracle();
+		} else if (typeBD.getValue().equals("MariaDB")) {
+			Main.fdb = new FabriqueMariaDB();
+		} else {
+			// TODO add other SGBD
+			System.err.println("PB SGBD");
+		}
+
 		if (userN.equals("") && passWord.equals("") && uRL.equals("")) {
 			cs = ConnectionSingleton.getInstance();
-			
+
 		} else {
 			cs = ConnectionSingleton.getInstance(uRL, userN, passWord);
 		}
 
 		try {
+
+//			Main.root.getChildren().remove(log);
 
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue1.fxml")));
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue2.fxml")));
@@ -85,6 +129,10 @@ public class LoginController {
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue4.fxml")));
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue5.fxml")));
 			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/Vue6.fxml")));
+			Main.listePane.add((AnchorPane) FXMLLoader.load(getClass().getResource("../View/BarreAction.fxml")));
+
+			System.out.println("\n\n\n");
+
 			Main.setVue(1);
 		} catch (IOException e) {
 
@@ -95,10 +143,9 @@ public class LoginController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			System.exit(1);
 		}
-
 
 	}
 
@@ -108,6 +155,9 @@ public class LoginController {
 		assert userName != null : "fx:id=\"userName\" was not injected: check your FXML file 'Login.fxml'.";
 		assert pass != null : "fx:id=\"pass\" was not injected: check your FXML file 'Login.fxml'.";
 		assert validate != null : "fx:id=\"validate\" was not injected: check your FXML file 'Login.fxml'.";
+		assert typeBD != null : "fx:id=\"typeBD\" was not injected: check your FXML file 'Login.fxml'.";
+
+		typeBD.getItems().setAll(als);
 
 	}
 }
