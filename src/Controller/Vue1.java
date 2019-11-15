@@ -119,7 +119,7 @@ public class Vue1 {
 							i++;
 
 						}
-						System.out.println("Requete SQL complï¿½tï¿½e");
+						System.out.println("Requete SQL complétée");
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
