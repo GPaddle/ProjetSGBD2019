@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Vue3">
    <children>
@@ -31,46 +32,72 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <JFXComboBox fx:id="liste" layoutX="44.0" layoutY="68.0" prefHeight="16.0" prefWidth="155.0" />
-      <JFXDatePicker fx:id="dDebutPicker" layoutX="44.0" layoutY="110.0" prefHeight="40.0" prefWidth="155.0" />
-      <JFXDatePicker fx:id="dFinPicker" layoutX="44.0" layoutY="278.0" prefHeight="40.0" prefWidth="155.0" />
-      <Line endX="4.60003662109375" endY="-5.20001220703125" fill="RED" layoutX="55.0" layoutY="180.0" startX="4.60003662109375" startY="76.99996948242188" strokeWidth="2.0" />
-      <Line endX="9.4000244140625" endY="47.399993896484375" fill="RED" layoutX="65.0" layoutY="190.0" startX="-4.385772705078125" startY="66.41415405273438" strokeWidth="2.0" />
-      <Line endX="-7.79998779296875" endY="66.82833862304688" fill="RED" layoutX="67.0" layoutY="191.0" startX="-21.79998779296875" startY="46.600006103515625" strokeWidth="2.0" />
-      <JFXButton fx:id="Valider" alignment="CENTER" layoutX="42.0" layoutY="346.0" onAction="#handle" prefHeight="40.0" prefWidth="155.0" text="Valider" />
-      <HBox prefHeight="40.0" prefWidth="600.0">
+      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="54.0" prefHeight="358.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: #0003;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <JFXButton fx:id="ListeP" alignment="CENTER" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Liste Plat">
+            <JFXComboBox fx:id="liste" prefHeight="16.0" prefWidth="155.0" promptText="Table" />
+            <JFXDatePicker fx:id="dDebutPicker" defaultColor="#aa0707" prefHeight="40.0" prefWidth="155.0" promptText="Date début" />
+            <JFXDatePicker fx:id="dFinPicker" defaultColor="#aa0707" prefHeight="40.0" prefWidth="155.0" promptText="Date fin" />
+            <JFXButton fx:id="Valider" alignment="CENTER" onAction="#handle" prefHeight="40.0" prefWidth="155.0" text="Valider" />
+         </children>
+         <padding>
+            <Insets bottom="80.0" top="80.0" />
+         </padding>
+      </VBox>
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="ListeP" alignment="TOP_LEFT" contentDisplay="TOP" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="93.0" style="-fx-background-color: #0002;" text="Liste des plats servis" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="NonListP" alignment="CENTER" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="! Liste Plat ">
+            <JFXButton fx:id="NonListP" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Liste des plats non servis" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="ServeurT" alignment="CENTER" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Serveur/table">
+            <JFXButton fx:id="ServeurT" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0f02;" text="Serveur par table et par date" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="ChiffreA" alignment="CENTER" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Chiffre A/Nb">
+            <JFXButton fx:id="ChiffreA" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Chiffre d'affaire et nombre commandes" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="NonCA" alignment="CENTER" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="! Chiffre affaire">
+            <JFXButton fx:id="NonCA" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Serveur sans chiffre d'affaire" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="MAJMont" alignment="CENTER" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Maj Montant">
+            <JFXButton fx:id="MAJMont" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Mise à jour montant" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="Cancel" alignment="CENTER" buttonType="RAISED" cancelButton="true" contentDisplay="CENTER" minWidth="40.0" onAction="#handle" prefHeight="40.0" prefWidth="44.0" ripplerFill="RED" text="X" textAlignment="CENTER" textFill="RED" />
+            <JFXButton fx:id="Cancel" alignment="CENTER" buttonType="RAISED" cancelButton="true" contentDisplay="CENTER" minWidth="40.0" onAction="#handle" prefHeight="40.0" prefWidth="44.0" ripplerFill="RED" text="X" textAlignment="CENTER" textFill="RED" wrapText="true">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </JFXButton>
          </children>
       </HBox>
    </children>
