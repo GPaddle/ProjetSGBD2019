@@ -69,7 +69,6 @@ public class Vue1 {
 	@FXML
 	void handle(ActionEvent event) {
 		if (event.getSource() instanceof JFXButton) {
-			Main.Action((JFXButton) event.getSource());
 
 			if (((JFXButton) event.getSource()).getId().equals("Valider")) {
 
@@ -98,7 +97,7 @@ public class Vue1 {
 						ps = c.prepareStatement("select distinct plat.numplat, plat.libelle\r\n" + "from PLAT\r\n"
 								+ "       inner join contient on plat.numplat = contient.numplat\r\n"
 								+ "       inner join commande on contient.numcom = commande.numcom\r\n"
-								+ "where datcom between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')");
+								+ "where datcom between "+Main.fdb.getDate()+" and "+Main.fdb.getDate());
 
 						if (dDeb.isAfter(dFin)) {
 							LocalDate dTemp = dFin;
@@ -120,7 +119,7 @@ public class Vue1 {
 							i++;
 
 						}
-						System.out.println("Fin de l'execution");
+						System.out.println("Requete SQL complétée");
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

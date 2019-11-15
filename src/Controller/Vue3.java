@@ -78,7 +78,6 @@ public class Vue3 {
 
 	@FXML
 	void handle(ActionEvent event) {
-		Main.Action((JFXButton) event.getSource());
 
 		if (((JFXButton) event.getSource()).getId().equals("Valider")) {
 			int taille = Resultats.getChildren().size();
@@ -91,7 +90,14 @@ public class Vue3 {
 			LocalDate dFin;
 			int table;
 
-			table = liste.getValue();
+			try {
+
+				table = liste.getValue();
+
+			} catch (NullPointerException e) {
+				System.err.println("Merci de spécifier une table");
+				return;
+			}
 
 			dDeb = dDebutPicker.getValue();
 			dFin = dFinPicker.getValue();
@@ -110,7 +116,7 @@ public class Vue3 {
 							"select distinct nomserv, to_char(dataff, 'DD/MM/YYYY')\r\n" + "from serveur\r\n"
 									+ "       inner join affecter on serveur.numserv = affecter.numserv\r\n"
 									+ "where numtab = ?\r\n"
-									+ "  and dataff between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')");
+									+ "  and dataff between "+Main.fdb.getDate()+" and "+Main.fdb.getDate());
 
 					if (dDeb.isAfter(dFin)) {
 						LocalDate dTemp = dFin;
@@ -134,7 +140,7 @@ public class Vue3 {
 						i++;
 
 					}
-					System.out.println("Fin de l'execution");
+					System.out.println("Requete SQL complétée");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -167,8 +173,6 @@ public class Vue3 {
 		for (int i = 0; i < als.length; i++) {
 			als[i] = al.get(i).getNumTab();
 		}
-
-		ObservableList<Integer> alNumTab = new ObservableListWrapper<>(null);
 
 		liste.getItems().setAll(als);
 

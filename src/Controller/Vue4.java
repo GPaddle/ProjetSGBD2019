@@ -65,7 +65,6 @@ public class Vue4 {
 
     @FXML
     void handle(ActionEvent event) {
-    	Main.Action((JFXButton)event.getSource());
     	
     	if (((JFXButton) event.getSource()).getId().equals("Valider")) {
 			int taille = Resultats.getChildren().size();
@@ -96,7 +95,7 @@ public class Vue4 {
 							"       inner join affecter on serveur.numserv = affecter.numserv\r\n" + 
 							"       inner join tabl on tabl.numtab = affecter.numtab\r\n" + 
 							"       inner join commande on commande.numtab = tabl.numtab\r\n" + 
-							"where datcom between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')\r\n" + 
+							"where datcom between "+Main.fdb.getDate()+" and "+Main.fdb.getDate()+"\r\n" + 
 							"group by serveur.nomserv, serveur.numserv\r\n" + 
 							"order by sum(montcom) DESC");
 
@@ -122,7 +121,7 @@ public class Vue4 {
 						i++;
 
 					}
-					System.out.println("Fin de l'execution");
+					System.out.println("Requete SQL complétée");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

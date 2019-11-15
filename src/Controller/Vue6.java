@@ -68,12 +68,11 @@ public class Vue6 {
 	@FXML // fx:id="liste"
 	private JFXComboBox<Integer> liste; // Value injected by FXMLLoader
 
-    @FXML // fx:id="Résultat"
-    private Text Résultat; // Value injected by FXMLLoader
+	@FXML // fx:id="Résultat"
+	private Text Résultat; // Value injected by FXMLLoader
 
 	@FXML
 	void handle(ActionEvent event) {
-		Main.Action((JFXButton) event.getSource());
 
 		if (((JFXButton) event.getSource()).getId().equals("calculer")) {
 
@@ -82,7 +81,13 @@ public class Vue6 {
 			 */
 
 			int numCom;
-			numCom = liste.getValue();
+			try {
+
+				numCom = liste.getValue();
+			} catch (NullPointerException e) {
+				System.err.println("Veuillez entrer un numéro de commande");
+				return;
+			}
 			Connection c = cs.getConnection();
 
 			CallableStatement cstmt;
@@ -91,23 +96,23 @@ public class Vue6 {
 
 				cstmt.setInt(1, numCom);
 				cstmt.executeUpdate();
-				
+
 				CommandeDAO cd = new CommandeDAO();
 				List<Commande> co = cd.getAll();
-				double valeur=-1;
+				double valeur = -1;
 
 				for (Commande commande : co) {
-					if (commande.getNumCom()==numCom) {
-						valeur=commande.getMontCom();
+					if (commande.getNumCom() == numCom) {
+						valeur = commande.getMontCom();
 					}
 				}
-				
-				Résultat.setText(valeur+" €");
+
+				Résultat.setText(valeur + " €");
+				System.out.println("Requete SQL complétée");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Fin de l'execution");
 
 		}
 
@@ -132,8 +137,6 @@ public class Vue6 {
 		for (int i = 0; i < als.length; i++) {
 			als[i] = al.get(i).getNumCom();
 		}
-
-		ObservableList<Integer> alNumTab = new ObservableListWrapper<>(null);
 
 		liste.getItems().setAll(als);
 
