@@ -111,6 +111,7 @@ public class Vue3 {
 									+ "       inner join affecter on serveur.numserv = affecter.numserv\r\n"
 									+ "where numtab = ?\r\n"
 									+ "  and dataff between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')");
+//SALUT GUILLAUME REGARDE HAUT DESSUS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 					if (dDeb.isAfter(dFin)) {
 						LocalDate dTemp = dFin;

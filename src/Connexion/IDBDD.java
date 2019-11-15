@@ -2,12 +2,14 @@ package Connexion;
 
 public class IDBDD {
 	
-	private String url ="jdbc:oracle:thin:@localhost:1521:XE";
-	private String id ="GPaddle";
-	private String mdp ="GPaddle";
+	private String url ="jdbc:mariadb://localhost:3306";
+	private String id ="root";
+	private String mdp ="";
 	
 
-	//   		jdbc:oracle:thin:@localhost:1521:XE
+	//jdbc:oracle:thin:@localhost:1521:XE
+	//jdbc:mariadb://localhost:3306
+
 	
 	public IDBDD(String url, String id, String mdp) {
 		super();

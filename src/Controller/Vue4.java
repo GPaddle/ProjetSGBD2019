@@ -99,6 +99,7 @@ public class Vue4 {
 							"where datcom between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')\r\n" + 
 							"group by serveur.nomserv, serveur.numserv\r\n" + 
 							"order by sum(montcom) DESC");
+//SALUT GUILLAUME REGARDE HAUT DESSUS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 					if (dDeb.isAfter(dFin)) {
 						LocalDate dTemp = dFin;

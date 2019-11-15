@@ -88,7 +88,7 @@ public class Vue6 {
 			CallableStatement cstmt;
 			try {
 				cstmt = c.prepareCall("{CALL majMontant(?)}");
-
+//ICI FAUT FAIRE 2 SCRIPT UN POUR AJOUTER LA PROCEDURE VERSION ORACLE ET UN AUTRE VERSION MYSQL
 				cstmt.setInt(1, numCom);
 				cstmt.executeUpdate();
 				

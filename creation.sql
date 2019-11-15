@@ -452,7 +452,7 @@ begin
   select grade into gServ
   from serveur
          inner join affecter on serveur.numserv = affecter.numserv
-  where to_char(:new.datpaie, 'DD/MM/YYYY') = to_char(affecter.dataff, 'DD/MM/YYYY')
+  where date_format(:new.datpaie, '%Y-%m-%d') = date_format(affecter.dataff, '%Y-%m-%d')
     and affecter.numtab = :new.numtab;
 
   if (gServ = 'maitre d''hotel' and montantCom / nbPersCour < 15) then
@@ -479,7 +479,7 @@ select *
 from auditer;
 
 insert into commande
-values (108, 14, '11/10/2016', 2, to_date('11/10/2016 22:45', 'dd/mm/yyyy hh24:mi'), 'Carte', null);
+values (108, 14, '11/10/2016', 2, str_to_date('11/10/2016 22:45', 'dd/mm/yyyy hh24:mi'), 'Carte', null);
 
 insert into contient
 values (108, 1, 1);

@@ -99,7 +99,8 @@ public class Vue1 {
 								+ "       inner join contient on plat.numplat = contient.numplat\r\n"
 								+ "       inner join commande on contient.numcom = commande.numcom\r\n"
 								+ "where datcom between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')");
-
+//SALUT GUILLAUME REGARDE HAUT DESSUS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//to_date(?, 'YYYY-MM-DD') -> str_to_date(?, '%Y-%m-%d')
 						if (dDeb.isAfter(dFin)) {
 							LocalDate dTemp = dFin;
 							dFin = dDeb;
