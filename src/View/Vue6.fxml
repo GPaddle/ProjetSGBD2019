@@ -4,9 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Vue6">
@@ -21,62 +19,5 @@
             <Insets bottom="80.0" top="80.0" />
          </padding>
       </VBox>
-      <HBox layoutX="10.0" layoutY="7.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <JFXButton fx:id="ListeP" alignment="TOP_LEFT" contentDisplay="TOP" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="93.0" style="-fx-background-color: #0002;" text="Liste des plats servis" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="NonListP" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Liste des plats non servis" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="ServeurT" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Serveur par table et par date" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="ChiffreA" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Chiffre d'affaire et nombre commandes" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="NonCA" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0002;" text="Serveur sans chiffre d'affaire" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="MAJMont" alignment="CENTER" ellipsisString="" onAction="#handle" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #0f02;" text="Mise à jour montant" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="Cancel" alignment="CENTER" buttonType="RAISED" cancelButton="true" contentDisplay="CENTER" minWidth="40.0" onAction="#handle" prefHeight="40.0" prefWidth="44.0" ripplerFill="RED" text="X" textAlignment="CENTER" textFill="RED" wrapText="true">
-               <font>
-                  <Font name="Tahoma" size="12.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </HBox>
    </children>
 </AnchorPane>
