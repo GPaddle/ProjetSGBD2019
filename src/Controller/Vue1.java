@@ -66,6 +66,10 @@ public class Vue1 {
 
 	private ConnectionSingleton cs;
 
+	/**
+	 * Controlleur dédié à la page vue 1 (Première requête)
+	 * @param event
+	 */
 	@FXML
 	void handle(ActionEvent event) {
 		if (event.getSource() instanceof JFXButton) {

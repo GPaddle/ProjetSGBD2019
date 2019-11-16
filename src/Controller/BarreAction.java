@@ -14,6 +14,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 
+/**
+ * @author Guillaume
+ *	Controlleur dédié à la Barre d'action
+ */
 public class BarreAction {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -43,6 +47,11 @@ public class BarreAction {
     @FXML // fx:id="Cancel"
     private JFXButton Cancel; // Value injected by FXMLLoader
 
+    /**
+     * Fonction qui change la vue courante en fonction de l'appuie sur les différents boutons
+     * 
+     * @param event
+     */
     @FXML
     void handle(ActionEvent event) {
     	if (event.getSource() instanceof JFXButton) {

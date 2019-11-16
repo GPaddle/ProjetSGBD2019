@@ -34,6 +34,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+/**
+ * @author Guillaume
+ *	
+ *	Controlleur dédié à la page de login
+ */
 public class LoginController {
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -74,6 +79,12 @@ public class LoginController {
 
 	String[] als = { "Oracle", "MariaDB" };
 
+	/**
+	 * Utilisation des différents boutons
+	 * Lance la connexion avec les différents champs remplis
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void handle(ActionEvent event) {
 

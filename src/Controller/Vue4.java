@@ -63,6 +63,11 @@ public class Vue4 {
 	@FXML // fx:id="dFin"
 	private JFXDatePicker dFinPicker; // Value injected by FXMLLoader
 
+
+	/**
+	 * Controlleur dédié à la page vue 4 (Quatrième requête)
+	 * @param event
+	 */
     @FXML
     void handle(ActionEvent event) {
     	

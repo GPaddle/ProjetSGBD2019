@@ -71,6 +71,10 @@ public class Vue6 {
 	@FXML // fx:id="Résultat"
 	private Text Résultat; // Value injected by FXMLLoader
 
+	/**
+	 * Controlleur dédié à la page vue 6 (Sixième requête)
+	 * @param event
+	 */
 	@FXML
 	void handle(ActionEvent event) {
 
@@ -118,6 +122,10 @@ public class Vue6 {
 
 	}
 
+	/**
+	 * Récupération de la totalité des numéros de commande
+	 * puis injection dans la comboBox
+	 */
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
 		assert calculer != null : "fx:id=\"calculer\" was not injected: check your FXML file 'Vue6.fxml'.";
