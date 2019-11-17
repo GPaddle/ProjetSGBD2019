@@ -5,7 +5,7 @@ L'ensemble des drives disponible est situé dans le dossier `src/Jars`
 ## SGBD couverts :
 
  - Oracle
- - MariaDB
+ - MariaDB (sauf pour les trigers)
 
 ## Ajout de SGBD non définis
 

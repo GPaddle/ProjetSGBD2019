@@ -138,7 +138,7 @@ create or replace
 
 declare  nbPersCour INT;
 declare  montantCom INT;
-declare  gServ      varchar2(20);
+declare  gServ      varchar(20);
 declare  nb         INT;
 
 
