@@ -92,34 +92,56 @@ alter table affecter add ( foreign key(numserv)references serveur(numserv));
 alter table contient add ( foreign key(numcom)references commande(numcom));
 alter table contient add ( foreign key(numplat)references plat(numplat));
 
-create or replace procedure majMontant
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE majMontant(p_numcom INT)
+BEGIN
+  DECLARE numComCourant INT;
+  DECLARE montCourant DECIMAL;
+  DECLARE sommeMont DECIMAL;
+  DECLARE numC CURSOR FOR SELECT contient.numcom
+                          FROM contient
+                          INNER JOIN plat ON contient.numplat = plat.numplat
+                          INNER JOIN commande ON contient.numcom=commande.numcom
+                          WHERE commande.numcom= p_numcom;
 
-begin
+  DECLARE montC CURSOR FOR SELECT plat.prixunit * contient.quantite
+                          FROM contient
+                          INNER JOIN plat ON contient.numplat = plat.numplat
+                          INNER JOIN commande ON contient.numcom=commande.numcom
+                          WHERE commande.numcom= p_numcom;
 
-declare numC cursor for select contient.numcom, plat.prixunit * contient.quantite as mont
-                  		from contient
-                        inner join plat on contient.numplat = plat.numplat;
-open numC;s
-  for commandeCourante in numC
-    loop
-      update commande set montcom = commandeCourante.mont where commandeCourante.numcom = commande.numcom;
-    end loop;
+  OPEN numC;
+  OPEN montC;
 
-end;
+  SET sommeMont = 0;
+
+  somme_loop : LOOP
+	FETCH montC INTO montCourant;
+	SET sommeMont = sommeMont + montCourant;
+
+    FETCH numC INTO numComCourant;
+    UPDATE commande SET montcom = sommeMont WHERE commande.numcom = numComCourant;
+    insert into test values('test');
+  END LOOP;
+
+  CLOSE numC;
+  CLOSE montC;
+END $$
+DELIMITER ;
 
 create or replace
   TRIGGER enregistrementAuditer
-  after update of montcom
+  after update
   on commande
   for each row
-declare
+  begin
 
-  nbPersCour number(2);
-  montantCom number(3);
-  gServ      varchar2(20);
-  nb         number(1);
+declare  nbPersCour INT;
+declare  montantCom INT;
+declare  gServ      varchar2(20);
+declare  nb         INT;
 
-begin
+
   montantCom := :new.montcom;
 
   nbPersCour := :new.nbpers;
