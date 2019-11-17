@@ -47,6 +47,10 @@ public class Vue2 {
 	@FXML // fx:id="Valider"
 	private JFXButton Valider; // Value injected by FXMLLoader
 
+	/**
+	 * Controlleur dédié à la page vue 2 (Deuxième requête)
+	 * @param event
+	 */
 	@FXML
 	void handle(ActionEvent event) {
 

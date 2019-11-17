@@ -6,8 +6,10 @@ import com.jfoenix.controls.JFXButton;
 
 import Fabrique.FabriqueDB;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -22,6 +24,10 @@ public class Main extends Application {
 
 	public static Stage ps;
 
+
+	private double xOffset = 0;
+    private double yOffset = 0;
+    
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		/*
@@ -36,6 +42,22 @@ public class Main extends Application {
 		ps = primaryStage;
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 		root = (AnchorPane) FXMLLoader.load(getClass().getResource("../View/Blank.fxml"));
+		
+		root.setOnMousePressed(new EventHandler<MouseEvent>() {
+	        @Override
+	        public void handle(MouseEvent event) {
+	            xOffset = event.getSceneX();
+	            yOffset = event.getSceneY();
+	        }
+	    });
+	    root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+	        @Override
+	        public void handle(MouseEvent event) {
+	            primaryStage.setX(event.getScreenX() - xOffset);
+	            primaryStage.setY(event.getScreenY() - yOffset);
+	        }
+	    });
+		
 		setVue(0);
 
 		Scene scene = new Scene(root);

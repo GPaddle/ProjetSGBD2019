@@ -76,6 +76,10 @@ public class Vue3 {
 	@FXML // fx:id="liste"
 	private JFXComboBox<Integer> liste; // Value injected by FXMLLoader
 
+	/**
+	 * Controlleur dédié à la page vue 3 (Troisième requête)
+	 * @param event
+	 */
 	@FXML
 	void handle(ActionEvent event) {
 
@@ -151,6 +155,10 @@ public class Vue3 {
 
 	}
 
+	/**
+	 * Récupération de la totalité des numéros de table
+	 * puis injection dans la comboBox
+	 */
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
 		assert Valider != null : "fx:id=\"Valider\" was not injected: check your FXML file 'Vue3.fxml'.";

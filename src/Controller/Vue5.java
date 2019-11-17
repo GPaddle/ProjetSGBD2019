@@ -63,6 +63,11 @@ public class Vue5 {
 	@FXML // fx:id="dFin"
 	private JFXDatePicker dFinPicker; // Value injected by FXMLLoader
 
+
+	/**
+	 * Controlleur dédié à la page vue 5 (Cinquième requête)
+	 * @param event
+	 */
 	@FXML
 	void handle(ActionEvent event) {
 		
